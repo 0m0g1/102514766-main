@@ -1,0 +1,74 @@
+con<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // TODO: Add code to check answers to questions
+            function check_answer(ans, id)
+            {
+                let sts = document.getElementById("status-shower");
+                sts.style.display = "block";
+                let btn = document.getElementById(id);
+                if (ans != 124)
+                {
+                    btn.classList.add("incorrect");
+                    sts.innerHTML = "Incorrect";
+                }
+                else
+                {
+                    btn.classList.add("Correct");
+                    sts.innerHTML = "Correct";
+                }
+            }
+        </script>
+        <script>
+            function check_ans()
+            {
+                let sts = document.getElementById("status-shower2");
+                sts.style.display = "block";
+                let ans =  document.querySelector("input").value;
+                if (ans == "Kenya" || ans == "kenya")
+                {
+                    document.getElementById("input").style.backgroundColor = "green";
+                    sts.innerHTML = "Correct";
+                }
+                else
+                {
+                    document.getElementById("input").style.backgroundColor = "red";
+                    sts.innerHTML = "Incorrect";
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+
+                <h3>How many moons does Saturn have?</h3>
+                <p id = "status-shower" style="display: none;">correct</p>
+                <button onclick = "check_answer(95, 'btn1');" id = "btn1" class = "">95</button>
+                <button onclick = "check_answer(28, 'btn2');" id = "btn2" class = "">28</button>
+                <button onclick = "check_answer(124, 'btn3');" id = "btn3" class = "">124</button
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+
+                <h3>Which country is known for having very fast runners who win numerous marathons?</h3>
+                <p id = "status-shower2" style="display: none;">correct</p>
+                <input type = "text" value="" id ="input">
+                <button onclick = "check_ans();">Check answer</button>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,26 @@
+#carousel{
+    width: 100%;
+    overflow: hidden;
+}
+
+#carousel img{
+    object-fit: cover;
+}
+
+#contact{
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+form{
+    width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  #carousel{
+      width: 50%;
+      overflow: hidden;
+  }
+}

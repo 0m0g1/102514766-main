@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block main %}
+    <h1>{{ username }}</h1>
+    <div class="container-fluid d-flex justify-content-center">
+        <form action="/cash" method="POST" class="col-sm-4">
+            <div class="mb-3">
+            <label for="cash" class="form-label">Add Cash</label>
+            <input type="number" class="form-control" id="cash" name="cash" min="0" step=".01" value="0.00">
+            </div>
+            <button type="submit" class="btn btn-primary">+</button>
+        </form>
+    </div>
+    <br>
+    <br>
+    <h2>Stocks</h2>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Symbol</th>
+            <th scope="col">Name</th>
+            <th scope="col">Shares</th>
+            <th scope="col">Price</th>
+            <th scope="col">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for stock in stocks %}
+                <tr>
+                    <td>{{ stock["symbol"] }}</td>
+                    <td>{{ stock["name"] }}</td>
+                    <td>{{ stock["shares"] | usd }}</td>
+                    <td>{{ stock["price"] }}</td>
+                    <td>{{ (stock["shares"]  * stock["cprice"]) | usd}}</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td></td>
+                <td></td>
+                <td><strong>Totals</strong><td>
+                <td>{{ total }}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td><strong>Cash</strong><td>
+                <td>{{ cash }}</td>
+            </tr>
+      </table>
+{% endblock %}
